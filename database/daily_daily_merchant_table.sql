@@ -1,0 +1,15 @@
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('A1', 112, 0, 0, 12);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('A2', 112, 1, 1, 12);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('A3', 112, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('B1', 113, 1, 4, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('B2', 113, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('B3', 113, 0, 0, 4);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('1', 114, 0, 0, 4);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('2', 114, 0, 0, 4);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('3', 114, 0, 0, 2);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('A', 115, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('B', 115, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('C', 115, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('D', 115, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('E', 115, 0, 0, 8);
+INSERT INTO daily.daily_merchant_table (table_no, merchant_id, book_status, sit_real, capacity) VALUES ('A4', 112, 1, 3, 5);

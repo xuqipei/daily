@@ -1,0 +1,2 @@
+INSERT INTO daily.daily_user (username, password, mobilephone, nickname, age, brithday, gender, create_time) VALUES ('shadiao', '123', '13188888888', 'shagua', 21, '2017-07-19 13:17:24', 'man', '2017-07-19 13:17:24');
+INSERT INTO daily.daily_user (username, password, mobilephone, nickname, age, brithday, gender, create_time) VALUES ('百富', '321', '1316666888', '傻吊', 27, '2017-07-19 14:45:06', 'gay', '2017-07-19 14:45:14');

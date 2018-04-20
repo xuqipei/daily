@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>添加菜品</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <script src="assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css"/>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="../js/common/vue.js"></script>
+    <style>
+        .theme-black select option {
+            background-color: #3a4144;
+            border: none;
+        }
+
+    </style>
+</head>
+
+<body data-type="widgets">
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <span class="vue-user-info">
+        <user-header :merchant-name="merchantName"></user-header>
+    </span>
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+        <div class="tpl-skiner-toggle am-icon-cog">
+        </div>
+        <div class="tpl-skiner-content">
+            <div class="tpl-skiner-content-title">
+                选择主题
+            </div>
+            <div class="tpl-skiner-content-bar">
+                <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                <span class="skiner-color skiner-black" data-color="theme-black"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-sidebar">
+        <left-nav v-for="(navObj, index) in navList" :key="index" :nav-object="navObj"
+                  :current-parent-nav="navMap.parent"
+                  :current-child-nav="navMap.child"></left-nav>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
+            <div class="row">
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title am-fl">添加菜品</div>
+                            <div class="widget-function am-fr">
+                                <a href="javascript:;" class="am-icon-cog"></a>
+                            </div>
+                        </div>
+                        <div class="widget-body am-fr">
+                            <form class="am-form tpl-form-line-form">
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">菜名</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" class="tpl-form-input" v-model="name" placeholder="菜名">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">分类</label>
+                                    <div class="am-u-sm-9">
+                                        <select id="doc-select-1"
+                                                v-model="categoryId">
+                                            <option class="option-fuck" v-for="category in categoryList"
+                                                    v-bind:value="category.id">{{category.name}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">描述</label>
+                                    <div class="am-u-sm-9">
+                                        <input type="text" v-model="description" placeholder="描述">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">价格</label>
+                                    <div class="am-u-sm-9">
+                                        <input v-model="price" type="text" placeholder="价格">
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <label class="am-u-sm-3 am-form-label">封面图 <span
+                                            class="tpl-form-line-small-title">1张</span></label>
+                                    <div class="am-u-sm-9">
+                                        <div class="am-form-group am-form-file">
+                                            <button type="button"
+                                                    class="am-btn am-btn-danger am-btn-sm">
+                                                <i class="am-icon-cloud-upload"></i> 添加封面
+                                            </button>
+                                            <input id="upload-main-pic" @change="uploadFile($event)"
+                                                   name="multipartFile"
+                                                   type="file">
+                                            <div id="main-pic" class="tpl-form-file-img">
+                                                <img style="width: 500px; height: 303px;" v-bind:src="mainPic"
+                                                     v-if="mainPic != ''">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="am-form-group">
+                                    <div class="am-u-sm-9 am-u-sm-push-3">
+                                        <button @click="addMenu" type="button"
+                                                class="am-btn am-btn-primary tpl-btn-bg-color-success ">
+                                            提交
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../js/controller.js"></script>
+<script src="../js/global_admin_vue.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/amazeui.datatables.min.js"></script>
+<script src="assets/js/dataTables.responsive.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script type="text/javascript">
+    var contentWrapper = new Vue({
+        el: '.tpl-content-wrapper',
+        data: {
+            name: '',
+            categoryId: '',
+            description: '',
+            price: '',
+            mainPic: '',
+            currUploadEl: '',
+            categoryList: [],
+            merchantId: 0
+        },
+        created: function () {
+            this.merchantId = userInfo.id;
+            leftSidebar.mapMenu(window.location.href);
+            this.getCategory();
+        },
+        methods: {
+            addMenu: function () {
+                if (isNaN(this.price)) {
+                    alert("这个价格不太合适吧～");
+                    return;
+                }
+
+                var result = menuController.addMenu(this.name, this.categoryId, this.price, this.mainPic, this.description);
+                if (result.status == 0) {
+                    console.log("添加成功");
+                    window.location.reload();
+                }
+                alert(result.msg);
+            },
+            uploadFile: function (event) {
+                var formData = new FormData();
+                this.currUploadEl = event.target.id;
+                formData.append("multipartFile", $(event.target)[0].files[0]);
+                fileUpload.upload(formData, this.uploadCallback)
+            },
+            getCategory: function () {
+                var result = menuController.getAllCategory(this.merchantId);
+                if (result.status == 0) {
+                    this.categoryList = result.data;
+                    this.categoryId = this.categoryList[0].id;
+                } else {
+                    console.log("获取分类失败");
+                    console.log(result);
+                }
+            },
+            uploadCallback: function (result) {
+                if (result.status == 0) {
+                    console.log('上传main图成功');
+                    console.log(result);
+                    this.mainPic = result.msg;
+                } else {
+                    console.log("上传图片失败信息:");
+                    console.log(result);
+                }
+            }
+        }
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500629779575, 2, 1, '红烧肉', 15.00, 75.00, 5, null);
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500629779575, 2, 2, '清蒸黄真强', 8.00, 48.00, 6, null);
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500629779575, 2, 1, '红烧肉', 15.00, 75.00, 5, null);
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500629779575, 2, 2, '清蒸黄真强', 8.00, 48.00, 6, null);
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500798410815, 1, 1, '红烧肉', 15.00, 75.00, 5, null);
+INSERT INTO daily.daily_order_item (order_no, user_id, menu_id, menu_name, unit_price, total_price, quantity, banner_url) VALUES (1500798410815, 1, 2, '清蒸黄真强', 8.00, 48.00, 6, null);

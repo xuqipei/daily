@@ -1,0 +1,3 @@
+INSERT INTO daily.daily_merchant (login_name, login_password, merchant_name, address, contact, banner_url) VALUES ('shaqiang', 'shaqiang', '傻强菜馆', '创业3路', null, null);
+INSERT INTO daily.daily_merchant (login_name, login_password, merchant_name, address, contact, banner_url) VALUES ('baifu', 'baifu', '爱浦京餐厅', '南方软件园', null, null);
+INSERT INTO daily.daily_merchant (login_name, login_password, merchant_name, address, contact, banner_url) VALUES (null, null, null, null, null, null);

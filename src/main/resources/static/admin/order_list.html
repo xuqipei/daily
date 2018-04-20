@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>订单列表</title>
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+    <script src="assets/js/echarts.min.js"></script>
+    <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="assets/css/amazeui.datatables.min.css"/>
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="../js/common/vue.js"></script>
+</head>
+
+<body data-type="widgets">
+<script src="assets/js/theme.js"></script>
+<div class="am-g tpl-g">
+    <span class="vue-user-info">
+        <user-header :merchant-name="merchantName"></user-header>
+    </span>
+    <!-- 风格切换 -->
+    <div class="tpl-skiner">
+        <div class="tpl-skiner-toggle am-icon-cog">
+        </div>
+        <div class="tpl-skiner-content">
+            <div class="tpl-skiner-content-title">
+                选择主题
+            </div>
+            <div class="tpl-skiner-content-bar">
+                <span class="skiner-color skiner-white" data-color="theme-white"></span>
+                <span class="skiner-color skiner-black" data-color="theme-black"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="left-sidebar">
+        <left-nav v-for="(navObj, index) in navList" :key="index" :nav-object="navObj"
+                  :current-parent-nav="navMap.parent"
+                  :current-child-nav="navMap.child"></left-nav>
+    </div>
+
+    <!-- 内容区域 -->
+    <div class="tpl-content-wrapper">
+        <div class="row-content am-cf">
+            <div class="row">
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                    <div class="widget am-cf">
+                        <div class="widget-head am-cf">
+                            <div class="widget-title  am-cf">订单列表</div>
+                        </div>
+                        <div class="widget-body am-fr">
+                            <div class="am-u-sm-12">
+                                <table id="doc-modal-list" width="100%"
+                                       class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                    <thead>
+                                    <tr>
+                                        <th>订单号</th>
+                                        <th>状态</th>
+                                        <th>总价</th>
+                                        <th>人数</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="order in orderList" class="even gradeC">
+                                        <td class="am-text-middle">{{order.orderNo}}</td>
+                                        <td class="am-text-middle">{{mapStatus(order.status)}}</td>
+                                        <td class="am-text-middle">{{order.totalPrice}}</td>
+                                        <td class="am-text-middle">{{order.sitReal}}</td>
+                                        <td class="am-text-middle">
+                                            <div class="tpl-table-black-operation">
+                                                <a href="javascript:;"
+                                                   @click="showOrderDetail(order.orderNo)">
+                                                    <i class="am-icon-pencil"></i> 订单详情
+                                                </a>
+                                                <a @click="deleteOrder(order.id)" href="javascript:;"
+                                                   class="tpl-table-black-operation-del">
+                                                    <i class="am-icon-trash"></i> 删除
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- more data -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="am-modal am-modal-no-btn" tabindex="-1" id="your-modal">
+            <div class="am-modal-dialog" style="background: transparent">
+                <div class="am-modal-hd"></div>
+                <div class="am-modal-bd">
+                    <div class="row-content am-cf">
+                        <div class="row">
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12">
+                                <div class="widget am-cf">
+                                    <div class="widget-head am-cf">
+                                        <div class="widget-title am-fl">订单总价{{totalPrice}}</div>
+                                        <div class="widget-function am-fr">
+                                            <a href="javascript: void(0)" class="am-close am-close-spin"
+                                               data-am-modal-close>&times;</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget-body am-fr">
+                                        <div class="am-u-sm-12">
+                                            <table id="detail-modal-list" width="100%"
+                                                   class="am-table am-table-compact am-table-striped tpl-table-black ">
+                                                <thead>
+                                                <tr>
+                                                    <th>菜名</th>
+                                                    <th>数量</th>
+                                                    <th>单价</th>
+                                                    <th>总价</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="item in itemList" class="even gradeC">
+                                                    <td class="am-text-middle">{{item.menuName}}</td>
+                                                    <td class="am-text-middle">{{Math.ceil(item.totalPrice /
+                                                        item.price)}}
+                                                    </td>
+                                                    <td class="am-text-middle">{{item.price}}</td>
+                                                    <td class="am-text-middle">{{item.totalPrice}}</td>
+                                                </tr>
+                                                <!-- more data -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script src="../js/controller.js"></script>
+<script src="../js/global_admin_vue.js"></script>
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/amazeui.datatables.min.js"></script>
+<script src="assets/js/dataTables.responsive.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script type="text/javascript">
+    var contentWrapper = new Vue({
+            el: '.tpl-content-wrapper',
+            data: {
+                tableId: '',
+                merchantId: 0,
+                tableNo: '',
+                capacity: '',
+                status: '',
+                sitReal: 0,
+                orderList: [],
+                createTime: '',
+                itemList: [],
+                totalPrice: 0
+            },
+            created: function () {
+                this.merchantId = userInfo.id;
+                leftSidebar.mapMenu(window.location.href);
+                this.getOrder();
+            },
+            methods: {
+                showOrderDetail: function (orderNo) {
+                    console.log(orderNo);
+                    var result = orderController.getAdminOrderDetail(orderNo);
+                    var options = {
+                        dimmer: false
+                    };
+                    var $modal = $('#your-modal');
+                    $modal.modal(options);
+                    if (result.status == 0) {
+                        this.createTime = result.data.createTime;
+                        this.itemList = result.data.orderItemVo;
+                        this.totalPrice = result.data.totalPrice;
+                    } else {
+                        alert(result.msg);
+                    }
+                },
+                mapStatus: function (status) {
+                    if (status == 10) {
+                        return '待支付';
+                    } else if (status == 50) {
+                        return '付款成功';
+                    }
+                },
+                getOrder: function () {
+                    var result = orderController.getAllOrder(this.merchantId);
+                    this.orderList = result.data;
+                    console.log(this.orderList);
+                },
+                deleteOrder: function (orderId) {
+                    var userConfirm = confirm("确定删除吗?");
+                    console.log(orderId + " " + userConfirm);
+                    if (!userConfirm) {
+                        return;
+                    }
+                    orderController.deleteOrder(orderId);
+                }
+            }
+        })
+    ;
+</script>
+</body>
+
+</html>

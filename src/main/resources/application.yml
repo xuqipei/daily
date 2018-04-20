@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:mysql://111.230.151.93:3306/daily?useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: password
+    driver-class-name: com.mysql.jdbc.Driver
+  http:
+    multipart:
+      max-file-size: 5Mb
+      maxRequestSize: 10Mb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+

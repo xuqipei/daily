@@ -1,0 +1,13 @@
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (112, '粤');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (112, '川菜');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (113, '闽南菜');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (113, '粤菜');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (113, '湘菜');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (114, '法式糕点');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (114, '中式糕点');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (115, '海鲜类');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (115, '酒水');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (115, '蔬菜类');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (115, '肉类');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (112, '酒水');
+INSERT INTO daily.daily_category (merchant_id, name) VALUES (112, '客家菜');

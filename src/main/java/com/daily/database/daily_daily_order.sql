@@ -1,0 +1,2 @@
+INSERT INTO daily.daily_order (order_no, user_id, merchant_id, item_nums, total_price, pay_time, status, create_time, sit_real, table_no) VALUES (1500629779575, 2, 1, null, 123.00, null, 10, '2017-07-21 17:36:20', 2, 'A1');
+INSERT INTO daily.daily_order (order_no, user_id, merchant_id, item_nums, total_price, pay_time, status, create_time, sit_real, table_no) VALUES (1500798410815, 1, 1, null, 123.00, null, 10, '2017-07-23 16:26:51', 2, 'A1');
