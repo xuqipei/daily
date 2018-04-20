@@ -1,8 +1,7 @@
-# 天天点餐
-
-# 餐桌模块
+# 餐饮平台后端接口
 
 ## 用户端
+
  - 已完成
     - 获取指定商家的所有餐桌
         - URL:
@@ -436,6 +435,7 @@
              - GET
          - RETURN: 
              {
+             
                "status": 0,
                "data": {
                  "id": 1,
@@ -450,6 +450,7 @@
              - GET
         - RETURN
             {
+            
                  "status": 0,
                  "data": [
                    {
@@ -463,7 +464,8 @@
                      "discount": 70
                    }
                  ]
-               }
+                 
+             }
     - 新增菜系   
          - URL:
                 - http://localhost:8080/manage/category/add
@@ -474,9 +476,9 @@
          - RETURN  
             {
             
-              "status": 0,
+               "status": 0,
               
-              "msg": "添加成功"
+               "msg": "添加成功"
               
             }                
     - 修改菜系(Iteger id)     
@@ -489,9 +491,9 @@
          - RETURN  
             {
             
-              "status": 0,
-              
-              "msg": "修改菜系信息成功"
+               "status": 0,
+               
+               "msg": "修改菜系信息成功"
               
             }
     - 删除菜系(Iteger id)    
@@ -502,9 +504,9 @@
          - RETURN  
             {
             
-              "status": 0,
+               "status": 0,
               
-              "msg": "删除成功"
+               "msg": "删除成功"
               
             }
     - 获取单个菜品(Integer id)
